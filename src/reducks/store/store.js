@@ -3,6 +3,7 @@ import {
    combineReducers,
    applyMiddleware,
 } from 'redux';
+import thunk from 'redux-thunk';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import { UsersReducer } from '../users/reducers';
@@ -13,7 +14,7 @@ export default function crateStore(history) {
          router: connectRouter(history),
          users: UsersReducer,
       }),
-      applyMiddleware(routerMiddleware(history))
+      applyMiddleware(routerMiddleware(history), thunk)
    );
 }
 // export default crateStore = () => {

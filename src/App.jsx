@@ -12,7 +12,8 @@ function App() {
    // console.log(selector.users);
    return (
       <>
-         <main className="c-main">
+         <main>
+            {/* <main className="c-main"> */}
             <Router />
          </main>
       </>

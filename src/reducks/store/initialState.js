@@ -2,6 +2,7 @@ const initialState = {
    users: {
       isSignedIn: false,
       uid: '',
+      role: '',
       username: '',
    },
 };
