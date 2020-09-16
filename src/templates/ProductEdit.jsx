@@ -1,0 +1,113 @@
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { PrimaryButton, SelectBox, TextInput } from '../components/UIkit';
+import { saveProduct } from '../reducks/products/operations';
+
+const ProductEdit = () => {
+   const dispatch = useDispatch();
+
+   const [name, setName] = useState('');
+   const [description, setDescription] = useState('');
+   const [category, setCategory] = useState('');
+   const [gender, setGender] = useState('');
+   const [price, setPrice] = useState('');
+
+   const categories = [
+      { id: 'all', name: '全て' },
+      { id: 'tops', name: 'トップス' },
+      { id: 'shirts', name: 'シャツ' },
+      { id: 'pants', name: 'パンツ' },
+   ];
+   const genders = [
+      { id: 'all', name: '全て' },
+      { id: 'male', name: 'メンズ' },
+      { id: 'female', name: 'レディース' },
+   ];
+
+   const inputName = useCallback(
+      event => {
+         setName(event.target.value);
+      },
+      [setName]
+   );
+   const inputDescription = useCallback(
+      event => {
+         setDescription(event.target.value);
+      },
+      [setDescription]
+   );
+   const inputPrice = useCallback(
+      event => {
+         setPrice(event.target.value);
+      },
+      [setPrice]
+   );
+   return (
+      <section>
+         <h2 className="u-text__headline u-text-center">商品の登録・編集</h2>
+         <div className="c-section-container">
+            <TextInput
+               fullWidth={true}
+               label={'商品名'}
+               multiline={false}
+               required={true}
+               onChange={inputName}
+               row={1}
+               value={name}
+               type={'text'}
+            ></TextInput>
+            <TextInput
+               fullWidth={true}
+               label={'商品説明'}
+               multiline={true}
+               required={true}
+               onChange={inputDescription}
+               rows={5}
+               value={description}
+               type={'text'}
+            ></TextInput>
+            <SelectBox
+               fullWidth={true}
+               label={'カテゴリ'}
+               required={true}
+               multiline={true}
+               select={setCategory}
+               options={categories}
+               value={category}
+            ></SelectBox>
+            <SelectBox
+               fullWidth={true}
+               label={'性別'}
+               required={true}
+               multiline={true}
+               select={setGender}
+               options={genders}
+               value={gender}
+            ></SelectBox>
+            <TextInput
+               fullWidth={true}
+               label={'価格'}
+               multiline={false}
+               required={true}
+               onChange={inputPrice}
+               row={1}
+               value={price}
+               type={'number'}
+            ></TextInput>
+         </div>
+         <div className="module-spacer--medium" />
+         <div className="center">
+            <PrimaryButton
+               label={'商品情報を追加'}
+               onClick={() => {
+                  dispatch(
+                     saveProduct(name, description, category, gender, price)
+                  );
+               }}
+            ></PrimaryButton>
+         </div>
+      </section>
+   );
+};
+
+export default ProductEdit;

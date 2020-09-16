@@ -28,6 +28,7 @@
       "s": "react-scripts start",
       "build": "react-scripts build",
       "deploy": "react-scripts build && firebase deploy",
+      "deploy firebase rules": "firebase deploy --only firestore:rules",
       "test": "react-scripts test",
       "eject": "react-scripts eject"
    },
