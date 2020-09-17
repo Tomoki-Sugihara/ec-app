@@ -19,8 +19,3 @@ export default function crateStore(history) {
       applyMiddleware(routerMiddleware(history), thunk)
    );
 }
-// export default crateStore = () => {
-//    return reduxCreateStore(
-//       combineReducers({users: UsersReducer})
-//    )
-// }

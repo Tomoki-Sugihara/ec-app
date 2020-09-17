@@ -5,8 +5,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import * as History from 'history';
 import createStore from './reducks/store/store';
 // import {ErrorBoundary} from "./components/UIkit";
-// import { MuiThemeProvider } from '@material-ui/core/styles';
-// import { theme } from './assets/theme';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { theme } from './assets/theme';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
@@ -28,7 +28,9 @@ render(
    //  </Provider>,
    <Provider store={store}>
       <ConnectedRouter history={history}>
-         <App />
+         <MuiThemeProvider theme={theme}>
+            <App />
+         </MuiThemeProvider>
       </ConnectedRouter>
    </Provider>,
    document.getElementById('root')

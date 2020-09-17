@@ -16,7 +16,7 @@ import {
 // import Edit from '@material-ui/icons/Edit';
 // import DeleteIcon from '@material-ui/icons/Edit';
 import { makeStyles } from '@material-ui/styles';
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { TextInput } from '../UIkit';
 
 const useStyles = makeStyles({
@@ -80,7 +80,7 @@ const SetSizeArea = props => {
       props.setSizes(newSizes);
    };
 
-   const memoIndex = useMemo(() => {
+   useEffect(() => {
       setIndex(props.sizes.length);
    }, [props.sizes.length]);
 
