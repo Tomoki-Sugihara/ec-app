@@ -4,6 +4,7 @@ import ImageArea from '../components/products/ImageArea';
 import { PrimaryButton, SelectBox, TextInput } from '../components/UIkit';
 import { saveProduct } from '../reducks/products/operations';
 import { db } from '../firebase/index';
+import { SetSizeArea } from '../components/products';
 
 const ProductEdit = () => {
    const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const ProductEdit = () => {
    const [gender, setGender] = useState('');
    const [price, setPrice] = useState('');
    const [images, setImages] = useState([]);
+   const [sizes, setSizes] = useState([]);
 
    const categories = [
       { id: 'all', name: '全て' },
@@ -66,6 +68,7 @@ const ProductEdit = () => {
                setGender(data.gender);
                setPrice(data.price);
                setImages(data.images);
+               setSizes(data.sizes);
             });
       }
    }, [id]);
@@ -125,6 +128,7 @@ const ProductEdit = () => {
             ></TextInput>
          </div>
          <div className="module-spacer--medium" />
+         <SetSizeArea sizes={sizes} setSizes={setSizes}/>
          <div className="center">
             <PrimaryButton
                label={'商品情報を追加'}
@@ -137,7 +141,8 @@ const ProductEdit = () => {
                         category,
                         gender,
                         price,
-                        images
+                        images,
+                        sizes
                      )
                   );
                }}

@@ -29,6 +29,13 @@ const Home = () => {
          >
             サインアウト
          </button>
+         <button
+            onClick={() => {
+               dispatch(push('/product/edit'));
+            }}
+         >
+            商品編集
+         </button>
       </div>
    );
 };
