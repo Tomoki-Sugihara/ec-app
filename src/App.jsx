@@ -1,19 +1,14 @@
 import React from 'react';
 import './assets/reset.css';
 import './assets/style.css';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { signInAction } from './reducks/users/actions';
-
+import Header from './components/header/Header';
 import Router from './Router';
 
 function App() {
-   // const dispatch = useDispatch();
-   // const selector = useSelector(state => state);
-   // console.log(selector.users);
    return (
       <>
-         <main>
-            {/* <main className="c-main"> */}
+         <Header></Header>
+         <main className="c-main">
             <Router />
          </main>
       </>
