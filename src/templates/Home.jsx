@@ -36,6 +36,13 @@ const Home = () => {
          >
             商品編集
          </button>
+         <button
+            onClick={() => {
+               dispatch(push('/product/'));
+            }}
+         >
+            商品詳細
+         </button>
       </div>
    );
 };

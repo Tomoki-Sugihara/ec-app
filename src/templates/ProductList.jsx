@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ProductCard } from '../components/products';
 import { fetchProducts } from '../reducks/products/operations';
 import { getProducts } from '../reducks/products/selectors';
+import Home from './Home';
 
 const ProductList = () => {
    const dispatch = useDispatch();
    const selector = useSelector(state => state);
    const products = getProducts(selector);
-   
+
    useEffect(() => {
       dispatch(fetchProducts());
    }, []);
@@ -27,6 +28,7 @@ const ProductList = () => {
                   />
                ))}
          </div>
+         <Home />
       </section>
    );
 };

@@ -84,10 +84,10 @@ const ProductEdit = () => {
                multiline={false}
                required={true}
                onChange={inputName}
-               row={1}
+               rows={1}
                value={name}
                type={'text'}
-            ></TextInput>
+            />
             <TextInput
                fullWidth={true}
                label={'商品説明'}
@@ -97,9 +97,8 @@ const ProductEdit = () => {
                rows={5}
                value={description}
                type={'text'}
-            ></TextInput>
+            />
             <SelectBox
-               fullWidth={true}
                label={'カテゴリ'}
                required={true}
                multiline={true}
@@ -108,7 +107,6 @@ const ProductEdit = () => {
                value={category}
             ></SelectBox>
             <SelectBox
-               fullWidth={true}
                label={'性別'}
                required={true}
                multiline={true}
@@ -122,31 +120,32 @@ const ProductEdit = () => {
                multiline={false}
                required={true}
                onChange={inputPrice}
-               row={1}
+               rows={1}
                value={price}
                type={'number'}
-            ></TextInput>
-         </div>
-         <div className="module-spacer--medium" />
-         <SetSizeArea sizes={sizes} setSizes={setSizes}/>
-         <div className="center">
-            <PrimaryButton
-               label={'商品情報を追加'}
-               onClick={() => {
-                  dispatch(
-                     saveProduct(
-                        id,
-                        name,
-                        description,
-                        category,
-                        gender,
-                        price,
-                        images,
-                        sizes
-                     )
-                  );
-               }}
-            ></PrimaryButton>
+            />
+            <div className="module-spacer--small" />
+            <SetSizeArea sizes={sizes} setSizes={setSizes} />
+            <div className="module-spacer--small" />
+            <div className="center">
+               <PrimaryButton
+                  label={'商品情報を追加'}
+                  onClick={() => {
+                     dispatch(
+                        saveProduct(
+                           id,
+                           name,
+                           description,
+                           category,
+                           gender,
+                           price,
+                           images,
+                           sizes
+                        )
+                     );
+                  }}
+               />
+            </div>
          </div>
       </section>
    );
