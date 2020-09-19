@@ -10,6 +10,7 @@ import {
    ProductDetail,
    CartList,
 } from './templates';
+import OrderConfirm from './templates/OrderConfirm';
 
 const Router = () => {
    return (
@@ -23,6 +24,7 @@ const Router = () => {
             <Route path="/product/edit(/:id)?" component={ProductEdit} />
 
             <Route exact path="/cart" component={CartList} />
+                <Route exact path="/order/confirm" component={OrderConfirm} />
          </Auth>
       </Switch>
    );
