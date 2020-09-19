@@ -4,6 +4,7 @@ import {
    Menu as MenuIcon,
    ShoppingCart,
 } from '@material-ui/icons';
+import { push } from 'connected-react-router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { db } from '../../firebase';
@@ -53,7 +54,7 @@ const HeaderMenus = props => {
 
    return (
       <>
-         <IconButton>
+         <IconButton onClick={() => dispatch(push('/cart'))} >
             <Badge badgeContent={productsInCart.length} color="secondary">
                <ShoppingCart />
             </Badge>
