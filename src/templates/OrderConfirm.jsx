@@ -1,7 +1,8 @@
 import { Divider, List, makeStyles } from '@material-ui/core';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PrimaryButton, TextDetail } from '../components/UIkit';
+import { orderProduct } from '../reducks/products/operations';
 import { getProductsInCart } from '../reducks/users/selectors';
 import CartListItem from './CartListItem';
 
@@ -39,6 +40,10 @@ const OrderConfirm = () => {
    const tax = Math.round(subtotal * 0.1);
    const total = subtotal + shippingFee + tax;
 
+   const order = useCallback(() => {
+      dispatch(orderProduct(productsInCart, total))
+   },[productsInCart, total])
+
    return (
       <section className="c-section-wrapin">
          <h2 className="u-text__headline">注文の確認</h2>
@@ -70,7 +75,7 @@ const OrderConfirm = () => {
                   label={'合計(税込)'}
                   value={'¥' + total.toLocaleString()}
                />
-               {/* <PrimaryButton label={"注文を確定する"} onClick={order} /> */}
+               <PrimaryButton label={"注文を確定する"} onClick={order} />
             </div>
          </div>
       </section>
