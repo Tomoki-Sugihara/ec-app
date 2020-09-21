@@ -66,21 +66,21 @@ const ClosableDrawer = props => {
          label: '商品登録',
          icon: <AddCircle />,
          id: 'register',
-         value: 'product/edit',
+         value: '/product/edit',
       },
       {
          func: selectMenu,
          label: '注文履歴',
          icon: <History />,
          id: 'history',
-         value: 'order/history',
+         value: '/order/history',
       },
       {
          func: selectMenu,
          label: 'プロフィール',
          icon: <Person />,
          id: 'profile',
-         value: 'user/mypage',
+         value: '/user/mypage',
       },
    ];
 

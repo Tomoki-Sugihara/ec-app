@@ -3,10 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderHistoryItem from '../components/products/OrderHistoryItem';
 import { fetchOrdersHistory } from '../reducks/products/operations';
-import {
-   getOrdersHistory,
-   getProductsInCart,
-} from '../reducks/users/selectors';
+import { getOrdersHistory } from '../reducks/users/selectors';
 
 const useStyles = makeStyles(theme => ({
    orderList: {
@@ -26,7 +23,6 @@ const OrderHistory = () => {
    const classes = useStyles();
    const dispatch = useDispatch();
    const selector = useSelector(state => state);
-   // const orders = getProductsInCart(selector);
    const orders = getOrdersHistory(selector);
 
    useEffect(() => {
