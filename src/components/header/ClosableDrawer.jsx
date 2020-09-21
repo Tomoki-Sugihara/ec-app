@@ -73,7 +73,7 @@ const ClosableDrawer = props => {
          label: '注文履歴',
          icon: <History />,
          id: 'history',
-         value: 'product/history',
+         value: 'order/history',
       },
       {
          func: selectMenu,

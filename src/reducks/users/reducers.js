@@ -9,6 +9,12 @@ export const UsersReducer = (state = initialState.users, action) => {
             cart: [...action.payload],
          };
       }
+      case Actions.FETCH_ORDERS_PRODUCTS: {
+         return {
+            ...state,
+            orders: [...action.payload],
+         };
+      }
       case Actions.SIGN_IN: {
          return {
             ...state,

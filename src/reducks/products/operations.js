@@ -1,6 +1,7 @@
 import { push } from 'connected-react-router';
 import { db, FirebaseTimestamp } from '../../firebase';
 import { deleteProductAction, fetchProductsAction } from '../products/actions';
+import { fetchOrderHistoryAction, fetchOrdersHistoryAction } from '../users/actions';
 
 const productsRef = db.collection('products');
 
@@ -159,5 +160,25 @@ export const orderProduct = (productsInCart, price) => {
                return false;
             });
       }
+   };
+};
+
+export const fetchOrdersHistory = () => {
+   return async (dispatch, getState) => {
+      const uid = getState().users.uid;
+      const list = [];
+
+      db.collection('users')
+         .doc(uid)
+         .collection('orders')
+         .orderBy('updated_at', 'desc')
+         .get()
+         .then(snapshots => {
+            snapshots.forEach(snapshot => {
+               const data = snapshot.data();
+               list.push(data);
+            });
+            dispatch(fetchOrdersHistoryAction(list));
+         });
    };
 };
